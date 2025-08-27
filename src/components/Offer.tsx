@@ -126,3 +126,4 @@ const Offer = () => {
       </div>
     </section>
   );
+};
