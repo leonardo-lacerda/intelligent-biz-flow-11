@@ -4,12 +4,8 @@ import { CheckCircle, Clock, Shield } from "lucide-react";
 const FinalCTA = () => {
   const guarantees = [
     {
-      icon: <CheckCircle className="w-5 h-5" />,
-      text: "Garantia de 30 dias"
-    },
-    {
       icon: <Clock className="w-5 h-5" />, 
-      text: "Implementação em 7 dias"
+      text: "Implementação em 1 dia"
     },
     {
       icon: <Shield className="w-5 h-5" />,
@@ -18,7 +14,7 @@ const FinalCTA = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-dark via-dark/95 to-primary/20 text-white relative overflow-hidden">
+    <section className="py-24 bg-dark text-white relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 gradient-glow rounded-full opacity-30 blur-3xl animate-pulse"></div>
       <div className="absolute bottom-0 right-1/4 w-128 h-128 gradient-glow rounded-full opacity-20 blur-3xl animate-pulse delay-1000"></div>
@@ -33,15 +29,15 @@ const FinalCTA = () => {
               </span>
             </div>
             
-            <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight">
               Pronto para ter um{" "}
-              <span className="bg-gradient-to-r from-primary-light to-white bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent">
                 assistente inteligente
               </span>{" "}
               que trabalha por você?
             </h2>
             
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
               Não deixe seus concorrentes saírem na frente. Seja o primeiro do seu segmento a ter IA trabalhando 24/7 no seu negócio.
             </p>
           </div>
@@ -53,30 +49,30 @@ const FinalCTA = () => {
               <div className="text-gray-300">Atendimento ativo</div>
             </div>
             <div className="text-center space-y-2">
-              <div className="text-4xl font-bold text-primary-light">37%</div>
+              <div className="text-4xl font-bold text-primary-light">87%</div>
               <div className="text-gray-300">Mais agendamentos</div>
             </div>
             <div className="text-center space-y-2">
-              <div className="text-4xl font-bold text-primary-light">7 dias</div>
+              <div className="text-4xl font-bold text-primary-light">1 dia</div>
               <div className="text-gray-300">Para implementar</div>
             </div>
           </div>
 
           {/* CTA */}
           <div className="space-y-8">
-            <div className="relative">
+            <div className="relative w-full max-w-sm mx-auto">
               <Button 
                 variant="hero" 
                 size="hero"
-                className="text-xl px-16 py-6 h-auto bg-white text-dark hover:bg-gray-100 shadow-2xl hover:shadow-white/20 group"
+                className="w-full text-base sm:text-lg lg:text-xl px-6 sm:px-12 lg:px-16 py-4 sm:py-5 lg:py-6 h-auto bg-primary-light text-dark hover:bg-primary-light/90 shadow-2xl hover:shadow-primary-light/20 group transition-all duration-300"
                 onClick={() => window.open('https://wa.me/seunumero', '_blank')}
               >
                 Quero meu promptAI agora
-                <div className="ml-3 text-2xl transition-transform group-hover:translate-x-1">→</div>
+                <div className="ml-2 sm:ml-3 text-lg sm:text-xl lg:text-2xl transition-transform group-hover:translate-x-1">→</div>
               </Button>
               
               {/* Pulse effect */}
-              <div className="absolute -inset-2 bg-white/20 rounded-2xl animate-ping opacity-75"></div>
+              <div className="absolute -inset-2 bg-primary-light/20 rounded-2xl animate-ping opacity-75"></div>
             </div>
 
             {/* Guarantees */}
