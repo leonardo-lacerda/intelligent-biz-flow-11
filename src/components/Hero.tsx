@@ -35,14 +35,26 @@ const Hero = () => {
                 variant="hero" 
                 size="hero"
                 className="group"
-                onClick={() => window.open('https://wa.me/seunumero', '_blank')}
+                onClick={() => window.open('https://wa.me/5527981271965?text=Quero%20saber%20mais', '_blank')}
               >
                 Quero meu promptAI agora
                 <div className="ml-2 transition-transform group-hover:translate-x-1">→</div>
               </Button>
               
-              <Button variant="outline-hero" size="hero">
-                Ver demonstração
+              <Button 
+                variant="outline-hero" 
+                size="hero"
+                onClick={() => {
+                  const featuresElement = document.querySelector('#features');
+                  if (featuresElement) {
+                    featuresElement.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+              >
+                O que você vai ter
               </Button>
             </div>
             

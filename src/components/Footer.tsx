@@ -31,7 +31,7 @@ const Footer = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Contato</h3>
               <div className="space-y-2 text-gray-400">
-                <p>WhatsApp: (27) 99999-9999</p>
+                <p>WhatsApp: (27) 98127-1965</p>
                 <p>Email: contato@promptai.com.br</p>
                 <p>Vitória, ES - Brasil</p>
               </div>

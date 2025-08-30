@@ -61,18 +61,24 @@ const FinalCTA = () => {
           {/* CTA */}
           <div className="space-y-8">
             <div className="relative w-full max-w-sm mx-auto">
-              <Button 
-                variant="hero" 
-                size="hero"
-                className="w-full text-base sm:text-lg lg:text-xl px-6 sm:px-12 lg:px-16 py-4 sm:py-5 lg:py-6 h-auto bg-primary-light text-dark hover:bg-primary-light/90 shadow-2xl hover:shadow-primary-light/20 group transition-all duration-300"
-                onClick={() => window.open('https://wa.me/seunumero', '_blank')}
+              <button 
+                className="w-full text-xl sm:text-2xl lg:text-1xl px-6 sm:px-12 lg:px-16 py-4 sm:py-5 lg:py-6 h-auto bg-green-500 text-white hover:bg-green-600 font-bold rounded-2xl shadow-2xl hover:shadow-green-500/20 group transition-all duration-300 hover:scale-105 hover:-translate-y-1 cursor-pointer relative z-10"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open('https://wa.me/5527981271965?text=Quero%20saber%20mais', '_blank');
+                }}
               >
-                Quero meu promptAI agora
-                <div className="ml-2 sm:ml-3 text-lg sm:text-xl lg:text-2xl transition-transform group-hover:translate-x-1">→</div>
-              </Button>
+                <span className="flex items-center justify-center">
+                  Quero meu promptAI agora
+                  <span className="ml-2 sm:ml-3 text-lg sm:text-xl lg:text-2xl transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-110">
+                    →
+                  </span>
+                </span>
+              </button>
               
               {/* Pulse effect */}
-              <div className="absolute -inset-2 bg-primary-light/20 rounded-2xl animate-ping opacity-75"></div>
+              <div className="absolute -inset-2 bg-green-500/20 rounded-2xl animate-ping opacity-75 pointer-events-none"></div>
             </div>
 
             {/* Guarantees */}

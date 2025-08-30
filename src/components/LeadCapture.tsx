@@ -16,32 +16,15 @@ const LeadCapture = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Save to localStorage
-    const newRequest = {
-      id: Date.now().toString(),
-      nome: formData.nome,
-      whatsapp: formData.whatsapp,
-      ramo: formData.ramo,
-      timestamp: new Date().toISOString(),
-      contacted: false
-    };
-    
-    const existingRequests = localStorage.getItem("lead_capture_requests");
-    const requests = existingRequests ? JSON.parse(existingRequests) : [];
-    requests.push(newRequest);
-    localStorage.setItem("lead_capture_requests", JSON.stringify(requests));
-    
-    console.log("Form submitted and saved:", newRequest);
-    
     // Show success message
     toast({
       title: "Dados salvos com sucesso!",
       description: "Suas informações foram registradas e você será redirecionado para o WhatsApp.",
     });
     
-    // Redirecionar para WhatsApp ou página de diagnóstico
+    // Redirecionar para WhatsApp
     const message = `Olá! Quero descobrir quantos clientes estou perdendo no WhatsApp. Meus dados: Nome: ${formData.nome}, Ramo: ${formData.ramo}`;
-    window.open(`https://wa.me/seunumero?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/5527981271965?text=${encodeURIComponent(message)}`, '_blank');
     
     // Reset form after a small delay
     setTimeout(() => {
@@ -171,9 +154,13 @@ const LeadCapture = () => {
                         <SelectTrigger className="h-11 sm:h-12 rounded-lg lg:rounded-xl text-sm sm:text-base">
                           <SelectValue placeholder="Selecione seu ramo" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg max-h-60 overflow-y-auto z-50">
                           {businessTypes.map((type) => (
-                            <SelectItem key={type} value={type}>
+                            <SelectItem 
+                              key={type} 
+                              value={type}
+                              className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-gray-900 dark:text-gray-100 font-medium"
+                            >
                               {type}
                             </SelectItem>
                           ))}
