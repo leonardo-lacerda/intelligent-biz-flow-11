@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ArrowLeft, Shield, Clock, Zap } from "lucide-react";
+import { Check, ArrowLeft, Shield, Clock, Zap, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CheckoutEssencial = () => {
@@ -16,6 +16,8 @@ const CheckoutEssencial = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +31,10 @@ const CheckoutEssencial = () => {
         ...prev,
         [name]: ''
       }));
+    }
+    // Clear submit error
+    if (submitError) {
+      setSubmitError('');
     }
   };
 
@@ -76,33 +82,55 @@ const CheckoutEssencial = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      try {
-        const response = await fetch('https://your-backend-url.railway.app/api/create-payment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...formData,
-            planType: 'ESSENCIAL',
-            amount: 97.00
-          }),
-        });
+    
+    if (!validateForm()) {
+      return;
+    }
 
-        const data = await response.json();
+    setIsLoading(true);
+    setSubmitError('');
+
+    try {
+      console.log('🔗 Conectando em: https://back-production-062d.up.railway.app/api/create-subscription');
+      
+      const response = await fetch('https://back-production-062d.up.railway.app/api/create-subscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          cpf: formData.cpf.replace(/\D/g, ''), // Remove formatação
+          email: formData.email,
+          telefone: formData.telefone.replace(/\D/g, ''), // Remove formatação
+          paymentMethod: formData.paymentMethod,
+          planType: 'ESSENCIAL',
+          amount: 97.00
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (response.ok) {
+        console.log('✅ Pagamento criado:', data);
         
-        if (response.ok && data.invoiceUrl) {
-          // Redirecionar para o link de pagamento do Asaas
+        // Redirecionar para o link de pagamento do Asaas
+        if (data.invoiceUrl) {
+          console.log('🔗 Redirecionando para:', data.invoiceUrl);
           window.location.href = data.invoiceUrl;
         } else {
-          console.error('Erro ao criar link de pagamento:', data.error);
-          // Aqui você pode adicionar um toast de erro
+          console.error('❌ Link de pagamento não encontrado:', data);
+          setSubmitError('Erro ao gerar link de pagamento. Tente novamente.');
         }
-      } catch (error) {
-        console.error('Erro ao processar pagamento:', error);
-        // Aqui você pode adicionar um toast de erro
+      } else {
+        console.error('❌ Erro na resposta:', data);
+        setSubmitError(data.error || data.message || 'Erro ao processar pagamento');
       }
+    } catch (error) {
+      console.error('❌ Erro no checkout:', error);
+      setSubmitError('Erro de conexão. Verifique sua internet e tente novamente.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -153,44 +181,6 @@ const CheckoutEssencial = () => {
                     <CardDescription className="text-lg">
                       Atendimento automatizado no WhatsApp
                     </CardDescription>
-                    {/* Meio de Pagamento */}
-                    <div className="space-y-3">
-                      <Label>Forma de pagamento *</Label>
-                      <div className="grid grid-cols-2 gap-3">
-                        <button
-                          type="button"
-                          onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'PIX' }))}
-                          className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-                            formData.paymentMethod === 'PIX' 
-                              ? 'border-primary bg-primary/5 text-primary' 
-                              : 'border-border hover:border-primary/40'
-                          }`}
-                        >
-                          <div className="flex flex-col items-center gap-2">
-                            <div className="text-2xl">🏦</div>
-                            <span className="font-medium text-sm">PIX</span>
-                            <span className="text-xs text-muted-foreground">Pagamento instantâneo</span>
-                          </div>
-                        </button>
-                        
-                        <button
-                          type="button"
-                          onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'CREDIT_CARD' }))}
-                          className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-                            formData.paymentMethod === 'CREDIT_CARD' 
-                              ? 'border-primary bg-primary/5 text-primary' 
-                              : 'border-border hover:border-primary/40'
-                          }`}
-                        >
-                          <div className="flex flex-col items-center gap-2">
-                            <div className="text-2xl">💳</div>
-                            <span className="font-medium text-sm">Cartão</span>
-                            <span className="text-xs text-muted-foreground">Crédito ou débito</span>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-
                   </div>
                   <div className="text-right">
                     <div className="text-3xl font-bold text-foreground">R$97</div>
@@ -251,6 +241,13 @@ const CheckoutEssencial = () => {
 
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Error Message */}
+                  {submitError && (
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+                      <p className="text-sm text-red-600 font-medium">❌ {submitError}</p>
+                    </div>
+                  )}
+
                   <div className="space-y-4">
                     {/* Nome */}
                     <div className="space-y-2">
@@ -263,6 +260,7 @@ const CheckoutEssencial = () => {
                         value={formData.nome}
                         onChange={handleInputChange}
                         className={errors.nome ? "border-red-500" : ""}
+                        disabled={isLoading}
                       />
                       {errors.nome && (
                         <p className="text-sm text-red-500">{errors.nome}</p>
@@ -288,6 +286,7 @@ const CheckoutEssencial = () => {
                         }}
                         maxLength={14}
                         className={errors.cpf ? "border-red-500" : ""}
+                        disabled={isLoading}
                       />
                       {errors.cpf && (
                         <p className="text-sm text-red-500">{errors.cpf}</p>
@@ -305,6 +304,7 @@ const CheckoutEssencial = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         className={errors.email ? "border-red-500" : ""}
+                        disabled={isLoading}
                       />
                       {errors.email && (
                         <p className="text-sm text-red-500">{errors.email}</p>
@@ -330,10 +330,51 @@ const CheckoutEssencial = () => {
                         }}
                         maxLength={15}
                         className={errors.telefone ? "border-red-500" : ""}
+                        disabled={isLoading}
                       />
                       {errors.telefone && (
                         <p className="text-sm text-red-500">{errors.telefone}</p>
                       )}
+                    </div>
+
+                    {/* Meio de Pagamento */}
+                    <div className="space-y-3">
+                      <Label>Forma de pagamento *</Label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'PIX' }))}
+                          disabled={isLoading}
+                          className={`p-4 rounded-xl border-2 transition-all duration-300 ${
+                            formData.paymentMethod === 'PIX' 
+                              ? 'border-primary bg-primary/5 text-primary' 
+                              : 'border-border hover:border-primary/40'
+                          } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="text-2xl">🏦</div>
+                            <span className="font-medium text-sm">PIX</span>
+                            <span className="text-xs text-muted-foreground">Pagamento instantâneo</span>
+                          </div>
+                        </button>
+                        
+                        <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, paymentMethod: 'CREDIT_CARD' }))}
+                          disabled={isLoading}
+                          className={`p-4 rounded-xl border-2 transition-all duration-300 ${
+                            formData.paymentMethod === 'CREDIT_CARD' 
+                              ? 'border-primary bg-primary/5 text-primary' 
+                              : 'border-border hover:border-primary/40'
+                          } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
+                          <div className="flex flex-col items-center gap-2">
+                            <div className="text-2xl">💳</div>
+                            <span className="font-medium text-sm">Cartão</span>
+                            <span className="text-xs text-muted-foreground">Crédito ou débito</span>
+                          </div>
+                        </button>
+                      </div>
                     </div>
                   </div>
 
@@ -357,9 +398,17 @@ const CheckoutEssencial = () => {
                   <Button 
                     type="submit"
                     size="lg"
-                    className="w-full h-12 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
+                    disabled={isLoading}
+                    className="w-full h-12 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 disabled:opacity-50"
                   >
-                    Continuar para o Pagamento
+                    {isLoading ? (
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Processando...
+                      </div>
+                    ) : (
+                      'Continuar para o Pagamento'
+                    )}
                   </Button>
 
                   <p className="text-xs text-center text-muted-foreground">
