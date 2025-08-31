@@ -91,9 +91,9 @@ const CheckoutEssencial = () => {
     setSubmitError('');
 
     try {
-      console.log('🔗 Conectando em: https://back-production-062d.up.railway.app/api/create-subscription');
-      
-      const response = await fetch('https://back-production-062d.up.railway.app/api/create-subscription', {
+      console.log('🔗 Conectando em: https://back-production-2560.up.railway.app/api/create-subscription');
+    
+      const response = await fetch('https://back-production-2560.up.railway.app/api/create-subscription', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
