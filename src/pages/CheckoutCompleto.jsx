@@ -106,7 +106,7 @@ const CheckoutCompleto = () => {
           telefone: formData.telefone.replace(/\D/g, ''), // Remove formatação
           paymentMethod: formData.paymentMethod,
           planType: 'COMPLETO',
-          amount: 147.00
+          amount: 247.00
         }),
       });
 
@@ -199,7 +199,7 @@ const CheckoutCompleto = () => {
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-sm text-muted-foreground line-through">antes R$397</span>
                       <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full font-semibold border border-primary/20">
-                        -R$50
+                        -R$100
                       </span>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ const CheckoutCompleto = () => {
                   <div className="flex items-center gap-3">
                     <TrendingUp className="w-5 h-5 text-primary" />
                     <div>
-                      <p className="font-semibold text-primary">Economize R$50/mês</p>
+                      <p className="font-semibold text-primary">Economize R$100/mês</p>
                       <p className="text-sm text-muted-foreground">R$1200 de economia anual</p>
                     </div>
                   </div>

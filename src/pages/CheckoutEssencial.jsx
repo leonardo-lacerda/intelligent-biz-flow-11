@@ -106,7 +106,7 @@ const CheckoutEssencial = () => {
           telefone: formData.telefone.replace(/\D/g, ''), // Remove formatação
           paymentMethod: formData.paymentMethod,
           planType: 'ESSENCIAL',
-          amount: 97.00
+          amount: 200.00
         }),
       });
 
