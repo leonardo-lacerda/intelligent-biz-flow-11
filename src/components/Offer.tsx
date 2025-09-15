@@ -54,7 +54,7 @@ const DualPricing = () => {
                 {/* Price Section */}
                 <div className="border-t border-border pt-4">
                   <div className="flex items-baseline gap-2 mb-1">
-                    <span className="text-3xl lg:text-4xl font-bold text-foreground">R$97</span>
+                    <span className="text-3xl lg:text-4xl font-bold text-foreground">R$200</span>
                     <span className="text-lg text-muted-foreground">/mês</span>
                   </div>
                   <p className="text-sm text-muted-foreground">Implementação em até 7 dias</p>
@@ -122,13 +122,13 @@ const DualPricing = () => {
                   {/* Price Section with Discount */}
                   <div className="border-t border-border pt-6">
                     <div className="flex items-baseline gap-2 mb-3">
-                      <span className="text-4xl lg:text-5xl font-bold text-foreground">R$147</span>
+                      <span className="text-4xl lg:text-5xl font-bold text-foreground">R$247</span>
                       <span className="text-lg text-muted-foreground">/mês</span>
                     </div>
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-sm text-muted-foreground line-through">antes R$197</span>
+                      <span className="text-sm text-muted-foreground line-through">antes R$397</span>
                       <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full font-semibold border border-primary/20">
-                        ECONOMIA DE R$50
+                        ECONOMIA DE R$100
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">Implementação em até 7 dias • Sem contrato</p>

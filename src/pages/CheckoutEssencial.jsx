@@ -184,7 +184,7 @@ const CheckoutEssencial = () => {
                     </CardDescription>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-bold text-foreground">R$97</div>
+                    <div className="text-3xl font-bold text-foreground">R$200</div>
                     <div className="text-sm text-muted-foreground">/mês</div>
                   </div>
                 </div>

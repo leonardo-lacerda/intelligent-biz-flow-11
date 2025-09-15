@@ -193,11 +193,11 @@ const CheckoutCompleto = () => {
                   </div>
                   <div className="text-right">
                     <div className="flex items-baseline gap-2">
-                      <div className="text-3xl font-bold text-foreground">R$147</div>
+                      <div className="text-3xl font-bold text-foreground">R$247</div>
                       <div className="text-sm text-muted-foreground">/mês</div>
                     </div>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-sm text-muted-foreground line-through">antes R$197</span>
+                      <span className="text-sm text-muted-foreground line-through">antes R$397</span>
                       <span className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full font-semibold border border-primary/20">
                         -R$50
                       </span>
@@ -213,7 +213,7 @@ const CheckoutCompleto = () => {
                     <TrendingUp className="w-5 h-5 text-primary" />
                     <div>
                       <p className="font-semibold text-primary">Economize R$50/mês</p>
-                      <p className="text-sm text-muted-foreground">R$600 de economia anual</p>
+                      <p className="text-sm text-muted-foreground">R$1200 de economia anual</p>
                     </div>
                   </div>
                 </div>
