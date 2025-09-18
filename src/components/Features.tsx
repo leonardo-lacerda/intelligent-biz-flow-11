@@ -74,11 +74,6 @@ const Features = () => {
       image: "https://i.ibb.co/qM9fxXC2/Review2.png", 
       alt: "Depoimento 2",
       rating: 5
-    },
-    {
-      image: "https://i.ibb.co/qM9fxXC2/Review2.png",
-      alt: "Depoimento 3", 
-      rating: 5
     }
   ];
 

@@ -57,7 +57,7 @@ const DualPricing = () => {
                     <span className="text-3xl lg:text-4xl font-bold text-foreground">R$200</span>
                     <span className="text-lg text-muted-foreground">/mês</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Implementação em até 7 dias</p>
+                  <p className="text-sm text-muted-foreground">Implementação em até 1 dia</p>
                 </div>
 
                 {/* Features List - Compacto */}
@@ -131,7 +131,7 @@ const DualPricing = () => {
                         ECONOMIA DE R$100
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Implementação em até 7 dias • Sem contrato</p>
+                    <p className="text-sm text-muted-foreground">Implementação em até 1 dia</p>
                   </div>
 
                   {/* Features List */}

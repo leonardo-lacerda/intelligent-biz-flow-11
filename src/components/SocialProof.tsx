@@ -109,7 +109,7 @@ const SocialProof = () => {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span>Implementação garantida em 7 dias</span>
+                <span>Implementação garantida em 1 dia</span>
               </div>
             </div>
           </div>

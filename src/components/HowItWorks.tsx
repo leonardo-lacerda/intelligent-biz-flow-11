@@ -24,7 +24,7 @@ const HowItWorks = () => {
       number: "4",
       icon: <Rocket className="w-6 h-6" />,
       title: "Sistema rodando sozinho",
-      description: "Em até 7 dias, sua IA estará atendendo clientes 24/7 automaticamente."
+      description: "Em até 1 dia, sua IA estará atendendo clientes 24/7 automaticamente."
     }
   ];
 

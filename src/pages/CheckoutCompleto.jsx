@@ -250,7 +250,7 @@ const CheckoutCompleto = () => {
                 <div className="border-t border-border pt-6 space-y-4">
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Clock className="w-4 h-4 text-primary" />
-                    <span>Implementação em até 7 dias</span>
+                    <span>Implementação em até 1 dia</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-muted-foreground">
                     <Shield className="w-4 h-4 text-primary" />

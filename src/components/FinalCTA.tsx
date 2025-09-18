@@ -66,7 +66,7 @@ const FinalCTA = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  window.open('https://wa.me/5527981271965?text=Quero%20saber%20mais', '_blank');
+                  window.open('https://promptaai.com.br/checkout/completo');
                 }}
               >
                 <span className="flex items-center justify-center">

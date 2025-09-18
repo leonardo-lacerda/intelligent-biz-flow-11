@@ -57,7 +57,7 @@ const DualPricing = () => {
                     <span className="text-3xl lg:text-4xl font-bold text-foreground">R$200</span>
                     <span className="text-lg text-muted-foreground">/mês</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Implementação em até 7 dias</p>
+                  <p className="text-sm text-muted-foreground">Implementação em até 1 dia</p>
                 </div>
 
                 {/* Features List - Compacto */}
@@ -85,7 +85,7 @@ const DualPricing = () => {
                   variant="outline"
                   size="lg" 
                   className="w-full h-11 font-semibold border-2 border-border/60 bg-background hover:bg-primary/5 hover:border-primary/40 hover:text-primary transition-all duration-300 shadow-sm hover:shadow-md"
-                  onClick={() => window.open('https://wa.me/seunumero', '_blank')}
+                  onClick={() => window.open('https://promptaai.com.br/checkout/essencial')}
                 >
                   Começar com o Essencial
                 </Button>
@@ -131,7 +131,7 @@ const DualPricing = () => {
                         ECONOMIA DE R$100
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground">Implementação em até 7 dias • Sem contrato</p>
+                    <p className="text-sm text-muted-foreground">Implementação em até 1 dia</p>
                   </div>
 
                   {/* Features List */}
@@ -173,7 +173,7 @@ const DualPricing = () => {
                     variant="hero"
                     size="lg"
                     className="w-full h-12 font-semibold bg-primary text-primary-foreground border-2 border-primary hover:bg-primary/90 hover:border-primary hover:shadow-lg transition-all duration-300 group-hover:scale-[1.02]"
-                    onClick={() => window.open('https://wa.me/seunumero', '_blank')}
+                    onClick={() => window.open('https://promptaai.com.br/checkout/completo')}
                   >
                     Assinar Pacote Completo
                   </Button>

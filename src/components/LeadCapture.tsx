@@ -69,7 +69,7 @@ const LeadCapture = () => {
                 </h2>
                 
                 <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed animate-slide-up [animation-delay:0.7s] opacity-0 [animation-fill-mode:forwards]">
-                  Responda 3 perguntas rápidas e receba o diagnóstico personalizado em 1 minuto.
+                  Responda 3 perguntas rápidas e receba o diagnóstico personalizado.
                 </p>
               </div>
 
